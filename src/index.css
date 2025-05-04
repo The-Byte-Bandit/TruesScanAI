@@ -1,13 +1,84 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.bg-theme{
+    /* background: linear-gradient(45deg, #000000, #C0C0C0); */
+    /* background: radial-gradient(circle at top right, #C0C0C0, #000000 20%); */
+    /* background: linear-gradient(135deg, #000000, #C0C0C0); */
+    /* background-image: radial-gradient(circle at top right, #C0C0C0, grey, #000000); */
+    /* background: linear-gradient(90deg, #384268, #C0C0C0); */
+    /* background-image: radial-gradient(circle at center center, rgb(71, 71, 71),rgb(8, 8, 8)); */
+
+    /* background-image: linear-gradient(135deg, transparent 0%, transparent 50%,rgba(159, 159, 159,0.07) 50%, rgba(159, 159, 159,0.07) 77%,transparent 77%, transparent 100%),linear-gradient(90deg, transparent 0%, transparent 91%,rgba(159, 159, 159,0.07) 91%, rgba(159, 159, 159,0.07) 99%,transparent 99%, transparent 100%),linear-gradient(135deg, transparent 0%, transparent 24%,rgba(159, 159, 159,0.07) 24%, rgba(159, 159, 159,0.07) 63%,transparent 63%, transparent 100%),linear-gradient(0deg, transparent 0%, transparent 49%,rgba(159, 159, 159,0.07) 49%, rgba(159, 159, 159,0.07) 63%,transparent 63%, transparent 100%),linear-gradient(90deg, rgb(0,0,0),rgb(0,0,0)); */
+    /* background-color: #000000; */
+    /* #161515 */
+    background: linear-gradient(45deg, #000000, #212020); 
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.cardbg{
+  background: linear-gradient(45deg, #000000, #212020); 
 }
+
+.oddhighlightbg{
+  background-color: #ff4b02;
+}
+
+.oddhighlighttext{
+  color: #ff4b02;
+}
+
+.lato {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .poppins{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .inter{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+  
+
+  .text-shadow-md {
+    text-shadow: 2px 2px 4px #161515;
+  }
+
+.text-grey-10{
+  color: #7A7A7A;
+}
+
+
+
+@keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .gradient-text {
+
+    /* linear-gradient(45deg, #727267, #5a5a5a, #383838) */
+    background: linear-gradient(45deg, #e0e0e0, #808080, #e0e0e0);
+    /* background: linear-gradient(90deg, #e0e0e0, #b0b0b0, #808080, #b0b0b0, #e0e0e0); */
+    background-size: 400% 100%;
+    -webkit-background-clip: text; /* Applies the gradient to the text */
+    -webkit-text-fill-color: transparent; /* Makes the text color transparent to show the gradient */
+    animation: gradientAnimation 6s ease infinite; /* Animation effect */
+  }
+  
