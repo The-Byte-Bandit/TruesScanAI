@@ -170,9 +170,8 @@
 
 
 import React,{useState} from 'react';
-import { head } from '../constants/constant.tsx';
+import { head,linkedin, whatsapp, instagram, github, facebook, twitter, discord, } from '../constants/constant.tsx';
 import SearchBar from '../components/seachrBar.tsx';
-import { FaTwitter, FaFacebook, FaLinkedin, FaInstagram, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 import styles, { typography } from "../style";
 
 
@@ -395,8 +394,8 @@ function Home() {
           </div>
         </div>
 
-        <div className="">
-          <h2 className="text-3xl text-center text-[#CCCCCC] font-bold mb-8">
+        <div className="poppins mt-20">
+          <h2 className="text-3xl text-center text-[#CCCCCC] font-light mb-8">
             Frequently Asked Questions
           </h2>
           <div className="max-w-3xl mx-auto">
@@ -404,13 +403,13 @@ function Home() {
               <div key={index} className="mb-4">
                 <div
                   onClick={() => toggleAccordion(index)}
-                  className="flex justify-between items-center cursor-pointer p-4 bg-[#222222] rounded-lg shadow-md"
+                  className="flex justify-between items-center cursor-pointer p-4  rounded-lg shadow-md"
                 >
-                  <h3 className="text-xl text-[#D0FF00]">{faq.question}</h3>
+                  <h3 className="text-xl gradient-text">{faq.question}</h3>
                   <span className="text-[#CCCCCC]">{activeIndex === index ? '-' : '+'}</span>
                 </div>
                 {activeIndex === index && (
-                  <div className="p-4 bg-[#171717] text-[#CCCCCC] rounded-b-lg shadow-md">
+                  <div className="poppins shadow-lg backdrop-blur-md bg-[#171717] bg-opacity-60 border-[#222222] border  p-4  text-[#CCCCCC] font-light rounded-lg ">
                     <p>{faq.answer}</p>
                   </div>
                 )}
@@ -418,33 +417,53 @@ function Home() {
             ))}
           </div>
         </div>
-        <div className="max-w-[350px] p-6 bg-[#171717] rounded-lg shadow-lg">
-      {/* Title */}
-      <h3 className="text-xl font-bold text-[#D0FF00] mb-4">Contact</h3>
-      <p className="text-sm text-[#CCCCCC] mb-6">
-        Reach out to us through any of the following channels.
-      </p>
 
-      {/* Icons */}
-      <div className="flex flex-wrap justify-between mb-4">
-        {/* Social Media and Contact Icons */}
-        <div className="flex gap-4">
-          <FaTwitter className="text-[#1DA1F2] text-2xl cursor-pointer hover:scale-105 transition-transform duration-200" />
-          <FaFacebook className="text-[#1877F2] text-2xl cursor-pointer hover:scale-105 transition-transform duration-200" />
-          <FaLinkedin className="text-[#0077B5] text-2xl cursor-pointer hover:scale-105 transition-transform duration-200" />
-          <FaInstagram className="text-[#C13584] text-2xl cursor-pointer hover:scale-105 transition-transform duration-200" />
-        </div>
-        <div className="flex gap-4">
-          <FaEnvelope className="text-[#CCCCCC] text-2xl cursor-pointer hover:scale-105 transition-transform duration-200" />
-          <FaPhoneAlt className="text-[#CCCCCC] text-2xl cursor-pointer hover:scale-105 transition-transform duration-200" />
-        </div>
-      </div>
+        <div className="max-w-3xl mx-auto mt-20 mb-6">
+          <div className="poppins shadow-lg backdrop-blur-md bg-[#171717] bg-opacity-60 border-[#222222] border flex flex-col md:flex-row items-center rounded-xl p-6 w-full max-w-full min-h-[180px]">
+            {/* Left Section */}
+            <div className="flex-shrink-0 mb-4 md:mb-0 h-full w-full md:w-1/2">
+              <h1 className="text-white text-lg font-light ">Reach Out To <br/> Us.</h1>
+              <p className=" gradient-text text-[11px]">For any inquiry or further support, contact us on any of these platforms.</p>
+            </div>
 
-      {/* Bottom text */}
-      <p className="text-sm text-[#7D7F78]">
-        You can also drop us a message anytime and we'll get back to you.
-      </p>
-    </div>
+            {/* Right Section (Icons) */}
+            <div className="flex flex-col items-center justify-center w-full md:w-1/2 gap-4">
+              {/* First Row of Icons */}
+              <div className="flex items-center justify-center space-x-4">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="icon-container">
+                  <img src={facebook} alt="Facebook" className="w-full h-full object-contain" />
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="icon-container">
+                  <img src={twitter} alt="Twitter" className="w-full h-full object-contain" />
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="icon-container">
+                  <img src={instagram} alt="Instagram" className="w-full h-full object-contain" />
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="icon-container">
+                  <img src={linkedin} alt="LinkedIn" className="w-full h-full object-contain" />
+                </a>
+              </div>
+
+              {/* Second Row of Icons */}
+              <div className="flex items-center justify-center space-x-4">
+                <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="icon-container">
+                  <img src={discord} alt="Discord" className="w-full h-full object-contain" />
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="icon-container">
+                  <img src={github} alt="GitHub" className="w-full h-full object-contain" />
+                </a>
+                <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="icon-container">
+                  <img src={whatsapp} alt="WhatsApp" className="w-full h-full object-contain" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
       </div>
     // </div>
   );
