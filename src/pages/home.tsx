@@ -169,14 +169,53 @@
 
 
 
-import React,{useState} from 'react';
-import { head,linkedin, whatsapp, instagram, github, facebook, twitter, discord, } from '../constants/constant.tsx';
+import React,{useState, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { searchArticles } from '../redux/actions/actions.ts';
+import { head,linkedin, whatsapp, instagram, github, facebook, twitter, discord, } from '../constants/constant.ts';
 import SearchBar from '../components/seachrBar.tsx';
 import styles, { typography } from "../style";
 
 
 function Home() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [query, setQuery] = useState('');
+  const [typedResult, setTypedResult] = useState('');  // State to store the typed result
+  const dispatch = useDispatch();
+  
+  const { searchResults, loading, error } = useSelector((state: RootState) => state);
+
+  // Handle input change
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  };
+
+  // Handle search submission
+  const handleSearch = () => {
+    if (query.trim()) {
+      dispatch(searchArticles(query));
+    }
+  };
+
+  // Typing effect for search results
+  useEffect(() => {
+    if (searchResults && searchResults.length > 0) {
+      const resultText = searchResults[0].analysis;  // Get the first result's analysis text
+      let index = 0;
+      const typingInterval = setInterval(() => {
+        setTypedResult((prev) => prev + resultText[index]);
+        index += 1;
+
+        if (index === resultText.length) {
+          clearInterval(typingInterval);
+        }
+      }, 100);  // Adjust the speed here (100ms per character)
+    }
+  }, [searchResults]); // Trigger typing effect when searchResults change
+
+
+  console.log(searchResults);
+  
 
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -238,7 +277,7 @@ function Home() {
 
       {/* header */}
       <div className="text-[#c0c0c0] md:pt-16 pt-8 h-full md:px-36">
-        <h1 className="md:text-[50px] text-6xl text-center animate-fade-in gradient-text md:text-nowrap">
+        <h1 className="md:text-[50px] text-[34px] line-height-1 text-center animate-fade-in gradient-text md:text-nowrap">
           Find the Truth Behind Every Claim with <br />TrueScan AI
         </h1>
         <p className="text-sm mt-4 text-[#7D7F78] text-center">
@@ -249,6 +288,31 @@ function Home() {
       <div className="mt-14">
         <SearchBar />
       </div>
+      {/* Search Results */}
+    {loading && <p>Loading...</p>}
+    {error && <p className="text-red-500">{error}</p>}
+    {true ? (
+      <div className="mt-4 flex flex-row flex-wrap md:flex-nowrap justify-center gap-6 py-14 px-8  md:p-10">
+        <div className="mt-4   poppins shadow-lg backdrop-blur-md bg-[#171717] bg-opacity-60 border-[#222222] border flex flex-col rounded-xl p-6 w-full max-w-[800px] min-h-[180px]">
+          <h3 className="text-[#e0e0e0] text-[13px] mb-2">Search Results:</h3>
+          {/* <ul>
+            {searchResults.map((result: { input_text: string, analysis: string, truth_score: Number }, index: number) => (
+              <li key={index} className="text-[#CCCCCC]">
+                <a href={result.link} className="text-[#D0FF00]">{result.input_text}</a>
+                <p>{result.analysis}</p>
+              </li>
+            ))}
+          </ul> */}
+          <h1 className="text-[#CCCCCC] text-[11px]">{searchResults.analysis}</h1>
+        </div>
+
+        <div className="mt-4   poppins shadow-lg backdrop-blur-md bg-[#171717] bg-opacity-60 border-[#222222] border flex flex-col rounded-xl p-6 w-full max-w-[400px] h-[180px]">
+        <h3 className="text-[#e0e0e0] text-[13px] mb-2">Truth Score:</h3>
+
+      </div>
+      </div>
+      
+    ): ""}
 
       {/* Cards Section */}
       <div className="mt-20">
