@@ -15,6 +15,7 @@ export interface AuthState {
   analysisData: string | null;
   truthScore: number | null;
   searchResults: SearchResult[];
+  success: false,
 }
 
 // Add this to your store typings

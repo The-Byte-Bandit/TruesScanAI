@@ -9,7 +9,8 @@ const initialState: AuthState = {
   isAdmin: JSON.parse(localStorage.getItem('user') || 'null')?.isAdmin || false,
   analysisData: null,
   truthScore: null,
-  searchResults: [],  // New state to hold the search results
+  searchResults: [],
+  success: false,
 };
 
 const authReducer = (state = initialState, action: AuthActionTypes): AuthState => {
@@ -23,6 +24,7 @@ const authReducer = (state = initialState, action: AuthActionTypes): AuthState =
         loading: false,
         searchResults: action.payload,  // Store the search results
         error: null,
+        success: true,
       };
 
     case SEARCH_FAILURE:
