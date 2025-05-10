@@ -8,8 +8,8 @@ import linkedin from "../assets/icons/linkedin.svg"
 import whatsapp from "../assets/icons/whatsapp.svg";
 
 
-export const BASE_URL = `http://localhost:5000/detect`
-// export const BASE_URL = `https://truesscanai-backend.onrender.com/detect`
+// export const BASE_URL = `http://localhost:5000/detect`
+export const BASE_URL = `https://truesscanai-backend.onrender.com/detect`
 
 export {
 head,
